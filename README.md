@@ -1,7 +1,7 @@
 # doc-template
-![workflow](https://github.com/serna37/doc-template/actions/workflows/Template-CI.yml/badge.svg?branch=develop)
+![workflow](https://github.com/serna37/util-js-api/workflows/Template-CI.yml/badge.svg?branch=develop)
 <!-- Description -->
-This repository is `Some Func` some description.
+This repository is `JS Util Function API` by GitHub Pages.
 
 ---
 
@@ -10,9 +10,7 @@ This repository is `Some Func` some description.
 <table>
   <tr>
     <td>License</td>
-    <td>Env</td>
     <td>Lang</td>
-    <td>DB</td>
     <td>Editor</td>
   </tr>
   <tr>
@@ -22,43 +20,10 @@ This repository is `Some Func` some description.
       </a>
     </td>
     <td>
-      <img src="https://img.shields.io/badge/-Docker-EEE.svg?logo=docker&style=flat">
-      <img src="https://img.shields.io/badge/-k8s-EEE.svg?logo=kubernetes&style=flat">
-      <br>
-      <img src="https://img.shields.io/badge/-shell-555.svg?logo=shell&style=flat">
-      <img src="https://img.shields.io/badge/-zsh-555.svg?logo=&style=flat">
-    </td>
-    <td>
       <img src="https://img.shields.io/badge/-HTML5-333.svg?logo=html5&style=flat">
       <img src="https://img.shields.io/badge/-CSS3-1572B6.svg?logo=css3&style=flat">
       <br>
       <img src="https://img.shields.io/badge/-JavaScript-276DC3.svg?logo=javascript&style=flat">
-      <img src="https://img.shields.io/badge/-Node.js-555.svg?logo=nodedotjs&style=flat">
-      <img src="https://img.shields.io/badge/-TypeScript-555.svg?logo=typescript&style=flat">
-      <img src="https://img.shields.io/badge/-React-555.svg?logo=react&style=flat">
-      <br>
-      <img src="https://img.shields.io/badge/-Python-F9DC3E.svg?logo=python&style=flat">
-      <img src="https://img.shields.io/badge/-Flask-000000.svg?logo=flask&style=flat">
-      <img src="https://img.shields.io/badge/-pandas-%23150458.svg?logo=pandas&style=flat">
-      <img src="https://img.shields.io/badge/-selenium-555.svg?logo=selenium&style=flat">
-      <br>
-      <img src="https://img.shields.io/badge/-Go-555.svg?logo=go&style=flat">
-      <img src="https://img.shields.io/badge/-Gin-555.svg?logo=go&style=flat">
-      <img src="https://img.shields.io/badge/-Gorm-555.svg?logo=go&style=flat">
-      <br>
-      <img src="https://img.shields.io/badge/-Java-F80000.svg?logo=&style=flat">
-      <img src="https://img.shields.io/badge/-Spring-555.svg?logo=spring&style=flat">
-      <img src="https://img.shields.io/badge/-SpringBoot-555.svg?logo=springboot&style=flat">
-      <img src="https://img.shields.io/badge/-MyBatis-000000.svg?logo=&style=flat">
-      <br>
-      <img src="https://img.shields.io/badge/-C-00599C.svg?logo=c&style=flat">
-      <img src="https://img.shields.io/badge/-C++-00599C.svg?logo=cplusplus&style=flat">
-      <img src="https://img.shields.io/badge/-Rust-555.svg?logo=rust&style=flat">
-    </td>
-    <td>
-      <img src="https://img.shields.io/badge/sqlite-%2307405e.svg?logo=sqlite&style=flat">
-      <img src="https://img.shields.io/badge/-PostgreSQL-555.svg?logo=postgresql&style=flat">
-      <img src="https://img.shields.io/badge/-MySQL-000000.svg?logo=mysql&style=flat">
     </td>
     <td>
       <img src="https://img.shields.io/badge/-Vim-019733.svg?logo=vim&style=flat">
@@ -214,40 +179,36 @@ This repository is `Some Func` some description.
 [live editor](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNpVjstqw0AMRX9FaNVC_ANeFBq7zSbQQrPzZCFsOTMk80CWCcH2v3ccb1qtxD3nCk3Yxo6xxP4W760lUTjVJkCe96ay4gb1NJyhKN7mAyv4GPgxw_7lEGGwMSUXLq-bv18lqKbjqjGodeG6bKh69r8Cz1A3R0oa0_kvOd3jDB-N-7b5_H9ihXPrs-mp7KloSaAieSq4Q8_iyXX5_WlNDKplzwbLvHYkV4MmLNmjUePPI7RYqoy8wzF1pFw7ugj5LVx-AfLqVWg)
 
 ```mermaid
----
-Titile: sample_er
----
-erDiagram
-    %% comment
-    table_1 ||--|| table_2 : one_to_one_identify
-    table_1 }o--|{ table_3 : zero_many_to_one-many_identify
-    table_4
-    table_5 ||..|| table_6 : one_to_one_non-identify
+sequenceDiagram
+    フロント-->>+本レポジトリ: fetch等で取得
+    本レポジトリ-->>-フロント: js文字列を返却
+    フロント->>フロント: evalで実行
 ```
 
 # API IF
 |status|method|endpoint|feature|remarks|
 |--|--|--|--|--|
-|<ul><li>[ ] </ul>|`POST`|`/app`|some description|some remarks|
-|<ul><li>[x] </ul>|`GET`|`/app/test`|some description|some remarks|
+|<ul><li>[ ] </ul>|`GET`|`/msg`|メッセージ表示||
 
-# Commands
-```sh
-npm run start
-docker run XXX
-```
-```sh
-# run detach
-nohup ./test_crud &
+# Basic
+```javascript
+// あくまでHTMLを返却するため、MIMEタイプに注意する
+const res = await fetch("https://xxxx...url").then(v => v.text())
 
-# checkport
-lsof -P -i:8181
-kill {PID}
-
-# sequence
-lsof -P -i:8181 | awk 'NR==2 {print $2}' | xargs -t -I{} kill {} && git pull && go build && nohup ./test_crud &
+// 変数スコープを絞るため、基本的にwindowに登録
+window.someObject = {
+    func1: v => console.log(v),
+    func2: () => console.log("")
+};
+window.someObject.func1("some"); // このように呼ぶ
 ```
 
 # Usage
-> [!Note]
-> sample usage
+> [!Warning]
+> CSP設定のあるサイトからは呼べないため注意
+
+```javascript
+javascript: (async () => {
+    await fetch("https://serna37.github.io/util-js-api/msg").then(v => v.ok && v.text()).then(eval);
+})();
+```
