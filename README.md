@@ -1,5 +1,5 @@
 # doc-template
-![workflow](https://github.com/serna37/util-js-api/workflows/Template-CI.yml/badge.svg?branch=develop)
+![workflow](https://github.com/serna37/util-js-api/actions/workflows/Template-CI.yml/badge.svg?branch=develop)
 <!-- Description -->
 This repository is `JS Util Function API` by GitHub Pages.
 
@@ -188,7 +188,7 @@ sequenceDiagram
 # API IF
 |status|method|endpoint|feature|remarks|
 |--|--|--|--|--|
-|<ul><li>[ ] </ul>|`GET`|`/msg`|メッセージ表示||
+|<ul><li>[x] </ul>|`GET`|`/msg`|メッセージ表示||
 
 # Basic
 ```javascript
